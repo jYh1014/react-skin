@@ -3,10 +3,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { SketchPicker } from 'react-color'
 import { Pagination, Tabs, Button } from 'antd'
+import less from 'less'
 const TabPane = Tabs.TabPane
 class Color extends React.Component {
   constructor(props) {
     super(props)
+    less.modifyVars({
+      '@primary-color': '#0035ff'
+    })
   }
   render() {
     return (

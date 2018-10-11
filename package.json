@@ -4,7 +4,7 @@
   "description": "enterprise develop framework",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --colors --watch --compress --content-base --config webpack.config.js"
+    "start": "node colorConf && webpack-dev-server --inline --progress --colors --watch --compress --config webpack.config.js"
   },
   "keywords": [
     "react",
