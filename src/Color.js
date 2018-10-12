@@ -8,8 +8,11 @@ const TabPane = Tabs.TabPane
 class Color extends React.Component {
   constructor(props) {
     super(props)
+  }
+  handleChange(color, event) {
+    console.log(color)
     less.modifyVars({
-      '@primary-color': '#0035ff'
+      '@primary-color': color.hex
     })
   }
   render() {
@@ -27,7 +30,7 @@ class Color extends React.Component {
         <Button>Default</Button>
         <br />
         <br />
-        <SketchPicker />
+        <SketchPicker onChange={ this.handleChange }/>
       </div>
     )
   }
