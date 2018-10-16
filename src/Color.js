@@ -11,7 +11,7 @@ class Color extends React.Component {
   }
   handleChange(color, event) {
     console.log(color)
-    less.modifyVars({
+    window.less.modifyVars({
       '@primary-color': color.hex
     })
   }
