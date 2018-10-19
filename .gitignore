@@ -20,5 +20,4 @@ stats.json
 .vscode
 jsconfig.json
 package-lock.json
-webpack.config.js
-webpack.config.prd.js
+
