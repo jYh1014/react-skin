@@ -1,6 +1,9 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require("path")
+const electron = require('electron');
+const Menu = electron.Menu;
+const Tray = electron.Tray
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -15,6 +18,41 @@ function createWindow ()  {
 // )
 mainWindow.loadURL(`http://localhost:9001/index.html`)
 
+var trayMenuTemplate = [
+  {
+      label: '设置',
+      click: function () {} //打开相应页面
+  },
+  {
+      label: '帮助',
+      click: function () {}
+  },
+  {
+      label: '关于',
+      click: function () {}
+  },
+  {
+      label: '退出',
+       click: function () {
+        app.quit();
+           app.quit();//因为程序设定关闭为最小化，所以调用两次关闭，防止最大化时一次不能关闭的情况
+      }
+  }
+]
+//系统托盘图标目录
+appTray = new Tray(path.join(__dirname, 'src/img/a.jpg'));//app.ico是app目录下的ico文件
+//图标的上下文菜单
+const contextMenu = Menu.buildFromTemplate(trayMenuTemplate);
+ 
+//设置此托盘图标的悬停提示内容
+appTray.setToolTip('我的托盘图标');
+
+//设置此图标的上下文菜单
+appTray.setContextMenu(contextMenu);
+//单击右下角小图标显示应用
+appTray.on('click',function(){
+    win.show();
+})
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
